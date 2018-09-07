@@ -1,0 +1,26 @@
+<%= form_for @holding, :html => {:multipart => true } do |form| %>
+  <% if @holding.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@holding.errors.count, "error") %> prohibited this holding from being saved:</h2>
+
+      <ul>
+      <% @holding.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    
+    <%= form.file_field :uploaded_file %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
