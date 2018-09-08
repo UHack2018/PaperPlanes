@@ -14,7 +14,7 @@ class HoldingsController < ApplicationController
 
   # GET /holdings/new
   def new
-    @holding = Holding.new
+    @holding = current_user.holdings.build
   end
 
   # GET /holdings/1/edit
@@ -24,7 +24,7 @@ class HoldingsController < ApplicationController
   # POST /holdings
   # POST /holdings.json
   def create
-    @holding = Holding.new(holding_params)
+    @holding = current_user.holdings.build(holding_params)
 
     respond_to do |format|
       if @holding.save
@@ -51,6 +51,15 @@ class HoldingsController < ApplicationController
     end
   end
 
+  def get 
+    holding = current_user.holdings.find_by_id(params[:id])
+    if holding
+      send_file holding.uploaded_file.path , :type => holding.uploaded_file_content_type
+    else 
+      flash[:error] = "Dont be Cheeky! Mind your assets "
+    end 
+  end 
+
   # DELETE /holdings/1
   # DELETE /holdings/1.json
   def destroy
@@ -64,7 +73,7 @@ class HoldingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_holding
-      @holding = Holding.find(params[:id])
+      @holding = current_user.holdings.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

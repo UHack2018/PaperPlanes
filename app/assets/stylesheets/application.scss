@@ -16,34 +16,147 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "materialize/components/color-variables";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("blue", "base") !default;
+@import 'materialize';
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
 
 body { 
   background-color: #EFEFEF; 
   font-family: "Lucida Grande","Verdana","Arial","Bitstream Vera Sans",sans-serif; 
-  font-size: 14px; 
+  font-size: 15px; 
 } 
   
+
 .header_wrapper { 
-    width: 880px; 
-    margin: 0 auto; 
+    width: 900px; 
+    margin: 10px auto; 
     overflow:hidden; 
-    padding:20px 0; 
+    padding:5px 0; 
 } 
 .logo a{ 
+    font-family:'Righteous',cursive;
     color: #338DCF; 
-    float: left; 
-    font-size: 28px; 
+    float: left;
+    letter-spacing: 3px;
+    border: 1.2px solid black;
+    font-size:25px; 
     font-weight: bold; 
     text-shadow: 2px 2px 2px #FFFFFF; 
     text-decoration:none; 
 } 
+ 
 #container { 
-  width: 800px; 
-  margin: 0 auto; 
+  width: 500px; 
+  margin: 100px auto; 
   background-color: #FFF; 
-  padding: 20px 40px; 
+  padding: 10px 30px; 
   border: solid 1px #BFBFBF;   
 } 
+ 
 #login_user_status { 
-    float:right;     
+    float: right;
+
+}
+.field{
+  width:400px;
+}
+.actions{
+  size:40px;
+}
+.waves-effect waves-light btn{
+  color:#DFF1FF;
+}
+.asset_list_header, .asset_list, .asset_details { 
+    width:800px; 
+    font-weight:bold; 
+    font-size:12px; 
+    overflow:hidden; 
+  
+} 
+.file_name_header, .file_name { 
+    width:350px; 
+    float:left; 
+    padding-left:20px; 
+} 
+.file_size_header, .file_size { 
+    width:100px; 
+    float:left; 
+} 
+.file_last_updated_header, .file_last_updated { 
+    width:150px; 
+    float:left; 
+} 
+.asset_list { 
+    padding:20px 0; 
+} 
+.asset_details { 
+    font-weight:normal; 
+    height:25px; 
+    line-height:25px; 
+    width:790px; 
+    color:#4F4F4F; 
+} 
+  
+.asset_details a, .asset_details a:visited { 
+    text-decoration:none; 
+    color:#1D96EF; 
+    font-size:12px; 
+}#menu { 
+    width:800px; 
+    padding:0 20px; 
+    margin:20px auto ; 
+    overflow:hidden; 
+} 
+#menu ul{ 
+    padding:0; 
+    margin:0; 
+} 
+#menu ul li { 
+    list-style:none; 
+    float:left; 
+    display:block; 
+    margin-right:10px; 
+  
+  
+} 
+#menu ul li a, #menu ul li a:visited{ 
+    display:block; 
+    padding:0 15px; 
+    line-height:25px; 
+    text-decoration:none; 
+    color:#45759F; 
+    background:#EFF8FF; 
+    border:1px solid #CFEBFF; 
+} 
+#menu ul li a:hover, #menu ul li a:active{ 
+    background:#DFF1FF; 
+    border:1px solid #AFDDFF; 
+}
+
+
+
+.folder  { 
+    background:url("../images/folder.png") no-repeat scroll left center transparent; 
+} 
+  
+.file { 
+    background:url("../images/file.png") no-repeat scroll left center transparent; 
+} 
+.folder.asset_details:hover, .shared_folder.asset_details:hover, .file.asset_details:hover  { 
+    border:1px solid #DFDFDF; 
+} 
+.folder.asset_details:hover  { 
+    background:url("../images/folder.png") no-repeat scroll left center #EFEFEF; 
+} 
+.shared_folder  { 
+    background:url("../images/shared_folder.png") no-repeat scroll left center transparent; 
+} 
+.shared_folder.asset_details:hover  { 
+    background:url("../images/shared_folder.png") no-repeat scroll left center #EFEFEF; 
+} 
+.file.asset_details:hover  { 
+    background:url("../images/file.png") no-repeat scroll left center #EFEFEF; 
 }

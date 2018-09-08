@@ -30,7 +30,9 @@ gem 'devise'
 gem "paperclip"
 gem 'bootstrap-sass'
 gem 'jquery-rails'
-
+gem "acts_as_tree"
+gem 'materialize-sass', '~> 1.0.0.rc2'
+gem 'material_icons' 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
