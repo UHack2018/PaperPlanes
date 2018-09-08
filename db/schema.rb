@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_07_095931) do
+ActiveRecord::Schema.define(version: 2018_09_08_071705) do
 
   create_table "folders", force: :cascade do |t|
     t.string "name"
@@ -26,8 +26,18 @@ ActiveRecord::Schema.define(version: 2018_09_07_095931) do
     t.integer "user_id"
     t.string "uploaded_file_file_name"
     t.string "uploaded_file_content_type"
-    t.bigint "uploaded_file_file_size"
+    t.integer "uploaded_file_file_size"
     t.datetime "uploaded_file_updated_at"
+  end
+
+  create_table "shared_folders", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "shared_email"
+    t.integer "shared_user_id"
+    t.integer "holding_id"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

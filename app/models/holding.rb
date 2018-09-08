@@ -5,7 +5,7 @@ class Holding < ApplicationRecord
 	 validates_attachment_content_type :uploaded_file, content_type: /\Aimage\/.*\z/,
 	 									:url => "holgins/get/:id",
 	 									:path => ":Rails_root/holdings/:id/:basename.:extension"
-
+	has_many :shared_folders, :dependent => :destroy
 
 	 def file_name
 	 	uploaded_file_file_name

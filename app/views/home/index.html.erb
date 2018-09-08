@@ -6,7 +6,7 @@
    		<div id="menu"> 
 	       	<ul id= "top_menu">     
 	           <li><%= link_to "Upload", new_holding_path %></li> 
-	           <li><%= link_to "New Folder" , new_folder_path %></li>
+	           
          </ul> 
 	    </div> 
 </div>
@@ -16,21 +16,37 @@
        <div class="file_last_updated_header">Modified</div> 
    </div> 
 <div class="asset_list">
-  <% @folders.each do |folders| %>
-    <div class="asset_details folder">
-      <div class="file_name"><%= link_to folders.name,folder_path(folders) %></div>
-      <div class="file_size">-</div>
-      <div class="file_last_updated">-</div>
-    </div>
-  <% end %>
+  
 </div>   
        <% @holdings.each do |holding| %> 
            <div class="asset_details file"> 
                <div class="file_name"><%= link_to holding.file_name, download_url(holding) %></div> 
                <div class="file_size"><%= number_to_human_size(holding.file_size) %></div> 
-               <div class="file_last_updated"><%= holding.uploaded_file_updated_at %></div> 
+               <div class="file_last_updated"><%= holding.uploaded_file_updated_at %></div>
+
+               <div class="actions"> 
+                  <div class="share"> 
+              <%= link_to "Share","#" , :holding_id => holding.id, :holding_name => holding.name %>
+            </div>
+                <div class="download"> 
+                  <%= link_to "Download" , download_url(holding) %> 
+                </div> 
+               <div class="delete"> 
+                  <%= link_to "Delete", holding, :confirm => 'Are you sure?', :method => :delete %> 
+               </div> 
+                </div>  
            </div> 
        <% end %> 
        <hr>
  
-<% end %>
+      <% end %>
+<div id="invitation_form" title="Invite others to share" style="display:none"> 
+    <% form_tag '/home/share' do -%> 
+            <label for="email_addresses">Enter recipient email addresses here</label><br /> 
+            <%= text_field_tag 'email_addresses', "", :class => 'text ui-widget-content ui-corner-all'%> 
+            <br /><br /> 
+            <label for="message">Optional message</label><br /> 
+            <%= text_area_tag 'message',"",  :class => 'text ui-widget-content ui-corner-all'%> 
+            <%= hidden_field_tag "folder_id" %> 
+    <% end -%>                 
+</div>

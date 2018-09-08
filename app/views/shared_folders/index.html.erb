@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shared Folders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Shared email</th>
+      <th>Shared user</th>
+      <th>Holding</th>
+      <th>Message</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shared_folders.each do |shared_folder| %>
+      <tr>
+        <td><%= shared_folder.user_id %></td>
+        <td><%= shared_folder.shared_email %></td>
+        <td><%= shared_folder.shared_user_id %></td>
+        <td><%= shared_folder.holding_id %></td>
+        <td><%= shared_folder.message %></td>
+        <td><%= link_to 'Show', shared_folder %></td>
+        <td><%= link_to 'Edit', edit_shared_folder_path(shared_folder) %></td>
+        <td><%= link_to 'Destroy', shared_folder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shared Folder', new_shared_folder_path %>
