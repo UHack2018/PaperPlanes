@@ -20,19 +20,19 @@
 </div>   
        <% @holdings.each do |holding| %> 
            <div class="asset_details file"> 
-               <div class="file_name"><%= link_to holding.file_name, download_url(holding) %></div> 
+               <div class="file_name"><%= holding.file_name %></div> 
                <div class="file_size"><%= number_to_human_size(holding.file_size) %></div> 
                <div class="file_last_updated"><%= holding.uploaded_file_updated_at %></div>
 
                <div class="actions"> 
                   <div class="share"> 
-              <%= link_to "Share","#" , :holding_id => holding.id, :holding_name => holding.name %>
+              <%= link_to "PRINT",folder_path(holding) %>
             </div>
                 <div class="download"> 
-                  <%= link_to "Download" , download_url(holding) %> 
+                  <%= link_to "DOWNLOAD" , download_url(holding) %> 
                 </div> 
                <div class="delete"> 
-                  <%= link_to "Delete", holding, :confirm => 'Are you sure?', :method => :delete %> 
+                  <%= link_to "DELETE", holding, :confirm => 'Are you sure?', :method => :delete %> 
                </div> 
                 </div>  
            </div> 
